@@ -14,9 +14,9 @@ public class AllureEnvironmentManager {
                 ImmutableMap.<String, String>builder()
                         .put("OS", getProperty("os.name"))
                         .put("Java version:", getProperty("java.runtime.version"))
-                        .put("Browser", getProperty("browserType"))
+                        .put("Browser", getProperty("browser"))
                         .put("Execution Type", getProperty("executionType"))
-                        .put("URL", getProperty("baseUrlWeb"))
+                        .put("URL", getProperty("BASE_URL"))
                         .build(), String.valueOf(AllureConstants.RESULTS_FOLDER) + File.separator
         );
         LogsManager.info("Allure environment variables set.");

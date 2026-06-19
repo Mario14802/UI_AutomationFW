@@ -4,8 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
 //Hard assertion
-public class Verification  extends BaseAssertion {
-    public Verification(WebDriver driver) {
+public class HardAssertion extends BaseAssertion {
+    public HardAssertion(WebDriver driver) {
         super(driver);
     }
 

@@ -16,6 +16,10 @@ Thumbs.db
 *.tmp
 *.temp
 
+test-output/
+allure-results/
+allure-report/
+target/
 
 # Java compiled files (rarely needed in Maven projects)
 *.class

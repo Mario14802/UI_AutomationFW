@@ -1,3 +1,5 @@
+package com.automationExercices.tests;
+
 import com.automationExercise.drivers.GUIDriver;
 import com.automationExercise.drivers.WebDriverProvider;
 import org.openqa.selenium.WebDriver;

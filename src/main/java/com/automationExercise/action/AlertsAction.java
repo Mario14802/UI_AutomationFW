@@ -2,6 +2,8 @@ package com.automationExercise.action;
 
 
 import com.automationExercise.utils.WaitManager;
+import com.automationExercise.utils.logsmanager.LogsManager;
+import org.openqa.selenium.WebDriver;
 
 public class AlertsAction {
     private final WebDriver driver;

@@ -6,12 +6,12 @@ import org.testng.ITestResult;
 import org.testng.asserts.SoftAssert;
 
 //Soft assertion
-public class Validation extends BaseAssertion {
+public class SoftAssertion extends BaseAssertion {
 
     private static SoftAssert softAssert = new SoftAssert();
     private static boolean used;
 
-    public Validation(WebDriver driver) {
+    public SoftAssertion(WebDriver driver) {
         super(driver);
     }
 

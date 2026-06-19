@@ -1,4 +1,4 @@
-package com.automationExercise.customelisteners;
+package com.automationExercise.listeners;
 
 import com.automationExercise.FileUtils;
 import com.automationExercise.drivers.UITest;
@@ -9,12 +9,10 @@ import com.automationExercise.report.AllureAttachmentManager;
 import com.automationExercise.report.AllureConstants;
 import com.automationExercise.report.AllureEnvironmentManager;
 import com.automationExercise.report.AllureReportGenerator;
-import com.automationExercise.utils.Allure;
 import com.automationExercise.utils.logsmanager.LogsManager;
 import com.automationExercise.utils.readers.PropertyReader;
 
-import com.automationExercise.validations.Validation;
-import org.apache.commons.logging.Log;
+import com.automationExercise.validations.SoftAssertion;
 import org.openqa.selenium.WebDriver;
 import org.testng.*;
 
@@ -72,7 +70,7 @@ public class TestNGListeners implements ITestListener, IExecutionListener , IInv
                 AllureAttachmentManager.attachRecords(testResult.getName());
             }
 
-            Validation.assertAll(testResult);
+            SoftAssertion.assertAll(testResult);
 
             AllureAttachmentManager.attachLogs();
 

@@ -8,18 +8,19 @@ import com.automationExercise.action.ElementAction;
 import com.automationExercise.action.FrameActions;
 import com.automationExercise.utils.logsmanager.LogsManager;
 import com.automationExercise.utils.readers.PropertyReader;
-import com.automationExercise.validations.Validation;
-import com.automationExercise.validations.Verification;
+import com.automationExercise.validations.SoftAssertion;
+import com.automationExercise.validations.HardAssertion;
 import org.openqa.selenium.WebDriver;
 
 import org.openqa.selenium.support.ThreadGuard;
 
 public class GUIDriver {
-    private final String browser = PropertyReader.getProperty("browserType");
+    private final String browser = PropertyReader.getProperty("browser");
     private  ThreadLocal<WebDriver> driverThreadLocal = new ThreadLocal<>();
     public GUIDriver()
     {
         LogsManager.info("Initializing GUIDriver with browser: " + browser);
+        System.out.println("Initializing GUIDriver with browser: " + browser);
         Browsers browserType = Browsers.valueOf(browser.toUpperCase());
         LogsManager.info("Starting driver for browser: " + browserType);
         AbstractDriver abstractDriver = browserType.getDriverFactory(); //local
@@ -40,12 +41,12 @@ public class GUIDriver {
         return new AlertsAction(get());
     }
     //soft assertions
-    public Validation validation() {
-        return new Validation(get());
+    public SoftAssertion validation() {
+        return new SoftAssertion(get());
     }
     // hard assertions
-    public Verification verification() {
-        return new Verification(get());
+    public HardAssertion verification() {
+        return new HardAssertion(get());
     }
     public WebDriver get() {
         return driverThreadLocal.get();
