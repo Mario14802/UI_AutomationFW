@@ -1,8 +1,8 @@
 package com.automationExercise.pages;
 
-import com.automationExercise.drivers.GUIDriver;
+import com.automationExercise.drivers.DriverManager;
 
 public class CartPage {
-    public CartPage(GUIDriver driver) {
+    public CartPage(DriverManager driver) {
     }
 }

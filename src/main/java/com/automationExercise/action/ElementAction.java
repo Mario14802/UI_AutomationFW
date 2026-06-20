@@ -5,6 +5,7 @@ import com.automationExercise.utils.logsmanager.LogsManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 import java.io.File;
 
@@ -85,8 +86,26 @@ public class ElementAction {
         });
     }
 
+    //select from dropdown
+    public ElementAction selectFromDropdown(By locator, String value) {
+        waitmanager.fluentWait().until(d ->
+                {
+                    try {
+                        WebElement element = d.findElement(locator);
+                        scrollToElementJs(locator);
+                        Select select = new Select(element);
+                        select.selectByVisibleText(value);
+                        LogsManager.info("Selected value '" + value + "' from dropdown: " + locator);
+                        return true;
+                    } catch (Exception e) {
+                        return false;
+                    }
+                }
+        );
+        return this;
+    }
 
-    public void uplaodFile(By locator, String Filepath) {
+    public void uploadFile(By locator, String Filepath) {
 
         String fileabsolute =  ("user.dir") + File.separator+  Filepath;
 

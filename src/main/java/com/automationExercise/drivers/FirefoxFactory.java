@@ -16,8 +16,8 @@ public class FirefoxFactory extends AbstractDriver {
         options.addArguments("--start-maximized");
         options.addArguments("--disable-popup-blocking");
 
-        if (PropertyReader.getProperty("excutionType").equalsIgnoreCase("remote") ||
-                PropertyReader.getProperty("excutionType").equalsIgnoreCase("LocalHeadless"))
+        if (PropertyReader.getProperty("executionType").equalsIgnoreCase("remote") ||
+                PropertyReader.getProperty("executionType").equalsIgnoreCase("LocalHeadless"))
         {
             options.addArguments("--headless");
         }

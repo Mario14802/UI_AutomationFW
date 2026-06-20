@@ -1,8 +1,8 @@
 package com.automationExercise.pages;
 
-import com.automationExercise.drivers.GUIDriver;
+import com.automationExercise.drivers.DriverManager;
 
 public class ContactUsPage {
-    public ContactUsPage(GUIDriver driver) {
+    public ContactUsPage(DriverManager driver) {
     }
 }

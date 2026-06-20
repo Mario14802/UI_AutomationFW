@@ -1,10 +1,10 @@
 package com.automationExercise.pages;
 
-import com.automationExercise.drivers.GUIDriver;
+import com.automationExercise.drivers.DriverManager;
 
 public class ProductsPage {
 
-    public ProductsPage(GUIDriver driver) {
+    public ProductsPage(DriverManager driver) {
 
     }
 }

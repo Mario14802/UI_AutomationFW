@@ -9,7 +9,7 @@ import java.io.FileReader;
 
 public class JsonReader {
 
-    private final  String test_data_path = "src/test/resources/test-data/data.json/";
+    private final String test_data_path = "src/test/resources/test-data/";
 
     String jsonFileName;
     String jsonReader;

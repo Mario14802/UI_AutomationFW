@@ -1,9 +1,9 @@
 package com.automationExercise.pages;
 
-import com.automationExercise.drivers.GUIDriver;
+import com.automationExercise.drivers.DriverManager;
 
 public class TestCasesPage {
-    public TestCasesPage(GUIDriver driver) {
+    public TestCasesPage(DriverManager driver) {
 
     }
 }

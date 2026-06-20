@@ -1,0 +1,23 @@
+{
+  "name": "Mario_Atef",
+  "email": "mario.qa.test01",
+  "titleMale": "Mr",
+  "titleFemale": "Mrs",
+  "password": "QaTest@2026",
+  "day": "15",
+  "month": "March",
+  "year": "1998",
+  "firstName": "Mario",
+  "lastName": "Atef",
+  "companyName": "Tech Solutions Ltd",
+  "address1": "45 Nile Street",
+  "address2": "Apartment 12B",
+  "country": "Canada",
+  "state": "Ontario",
+  "city": "Toronto",
+  "zipcode": "M5V2T6",
+  "mobileNumber": "4165557890",
+  "messages": {
+    "error": "Email Address already exist!"
+  }
+}

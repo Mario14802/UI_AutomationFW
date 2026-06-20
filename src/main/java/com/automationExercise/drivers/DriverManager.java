@@ -14,20 +14,30 @@ import org.openqa.selenium.WebDriver;
 
 import org.openqa.selenium.support.ThreadGuard;
 
-public class GUIDriver {
+public class DriverManager {
     private final String browser = PropertyReader.getProperty("browser");
     private  ThreadLocal<WebDriver> driverThreadLocal = new ThreadLocal<>();
-    public GUIDriver()
+
+    public DriverManager()
     {
-        LogsManager.info("Initializing GUIDriver with browser: " + browser);
-        System.out.println("Initializing GUIDriver with browser: " + browser);
+        LogsManager.info("Initializing DriverManager with browser: " + browser);
+        //Get the browser from properties
         Browsers browserType = Browsers.valueOf(browser.toUpperCase());
         LogsManager.info("Starting driver for browser: " + browserType);
+        //get the driver of the needed browser
         AbstractDriver abstractDriver = browserType.getDriverFactory(); //local
+        //ThreadLocal answers: "Which driver belongs to this thread?"
+        //ThreadGuard answers: "Is the current thread allowed to use this driver is it the creator of the object or driver?"
         WebDriver driver = ThreadGuard.protect(abstractDriver.createDriver());
         driverThreadLocal.set(driver);
     }
 
+    //get the exact driver form the thread
+    public WebDriver get() {
+        return driverThreadLocal.get();
+    }
+
+    // return the object type to able to make method chaining
     public ElementAction element() {
         return new ElementAction(get());
     }
@@ -48,9 +58,7 @@ public class GUIDriver {
     public HardAssertion verification() {
         return new HardAssertion(get());
     }
-    public WebDriver get() {
-        return driverThreadLocal.get();
-    }
+
 
     public  void quitDriver() {
         driverThreadLocal.get().quit();

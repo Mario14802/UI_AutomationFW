@@ -1,6 +1,6 @@
 package com.automationExercise.pages.components;
 
-import com.automationExercise.drivers.GUIDriver;
+import com.automationExercise.drivers.DriverManager;
 import com.automationExercise.pages.*;
 import com.automationExercise.utils.logsmanager.LogsManager;
 import com.automationExercise.utils.readers.PropertyReader;
@@ -8,9 +8,9 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 public class NavigationBarComponent {
-    private final GUIDriver driver;
+    private final DriverManager driver;
 
-    public NavigationBarComponent(GUIDriver driver) {
+    public NavigationBarComponent(DriverManager driver) {
         this.driver = driver;
     }
 
