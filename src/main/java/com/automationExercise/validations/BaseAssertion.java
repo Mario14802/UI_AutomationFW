@@ -7,11 +7,14 @@ import org.openqa.selenium.WebDriver;
 
 public abstract class BaseAssertion {
 
-    protected final WebDriver driver;
-    protected final WaitManager waitManager;
-    protected final ElementAction elementAction;
+    protected  WebDriver driver;
+    protected  WaitManager waitManager;
+    protected  ElementAction elementAction;
 
-    public BaseAssertion(WebDriver driver) {
+    protected BaseAssertion() {
+    }
+
+    protected BaseAssertion(WebDriver driver) {
         this.driver = driver;
         this.waitManager = new WaitManager(driver);
         this.elementAction = new ElementAction(driver);

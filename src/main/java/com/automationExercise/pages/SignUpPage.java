@@ -8,9 +8,6 @@ import org.openqa.selenium.By;
 public class SignUpPage {
 
     private final DriverManager driver;
-    public SignUpPage(DriverManager driver) {
-        this.driver = driver;
-    }
     //Locators
     private final By name = By.cssSelector("[data-qa=\"name\"]");
     private final By email = By.cssSelector("[data-qa=\"email\"]");
@@ -33,7 +30,10 @@ public class SignUpPage {
     private final By createAccountButton = By.cssSelector("[data-qa=\"create-account\"]");
     private final By accountCreatedLabel = By.cssSelector("[data-qa=\"account-created\"]");
     private final By continueButton = By.cssSelector("[data-qa=\"continue-button\"]");
-    private final By SignUpPageLabel =By.xpath("//b[.=\"Enter Account Information\"]");
+    private final By SignUpPageLabel = By.xpath("//b[.=\"Enter Account Information\"]");
+    public SignUpPage(DriverManager driver) {
+        this.driver = driver;
+    }
 
     //Actions
 
@@ -82,6 +82,7 @@ public class SignUpPage {
         driver.element().type(mobileNumber, mobileNumberText);
         return this;
     }
+
     @Step("Click Create Account Button")
     public SignUpPage clickCreateAccountButton() {
         driver.element().click(createAccountButton);
@@ -91,7 +92,7 @@ public class SignUpPage {
     @Step("Click Continue Button")
     public NavigationBarComponent clickContinueButton() {
         driver.element().click(continueButton);
-        return  new NavigationBarComponent(driver);
+        return new NavigationBarComponent(driver);
     }
 
 
@@ -101,5 +102,6 @@ public class SignUpPage {
         driver.verification().isElementVisible(accountCreatedLabel);
         return this;
     }
+
 
 }

@@ -10,6 +10,10 @@ public class SoftAssertion extends BaseAssertion {
 
     private static SoftAssert softAssert = new SoftAssert();
     private static boolean used;
+    public SoftAssertion() {
+        super();
+    }
+
 
     public SoftAssertion(WebDriver driver) {
         super(driver);

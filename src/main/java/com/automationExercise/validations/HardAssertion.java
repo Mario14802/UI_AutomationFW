@@ -3,8 +3,13 @@ package com.automationExercise.validations;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
-//Hard assertion
+//Hard assertion verifcation
 public class HardAssertion extends BaseAssertion {
+
+    public HardAssertion() {
+        super();
+    }
+
     public HardAssertion(WebDriver driver) {
         super(driver);
     }

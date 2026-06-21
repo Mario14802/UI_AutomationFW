@@ -29,9 +29,8 @@ public class AllureBinaryManager {
                 return url.split("/tag/")[1];
             }
             catch (Exception e) {
-                throw new IllegalStateException("Unable to resolve Allure version", e);
+                return "2.43.0";
             }
-
         }
     }
 
