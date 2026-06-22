@@ -93,7 +93,7 @@ public class ProductsPage {
     }
 
     //validations
-    @Step("Validate product details for {productName} with price {productPrice}")
+    @Step("Validate product details for {ProductName} with price {ProductPrice}")
     public ProductsPage validateProductDetails(String ProductName, String ProductPrice) {
         String actualProductName = driver.element().hover(productName(ProductName)).getText(productName(ProductName));
         String actualProductPrice = driver.element().hover(productName(ProductName)).getText(productPrice(ProductName));

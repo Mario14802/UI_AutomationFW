@@ -3,6 +3,7 @@ package com.automationExercise.action;
 import com.automationExercise.utils.WaitManager;
 import com.automationExercise.utils.logsmanager.LogsManager;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -20,26 +21,30 @@ public class ElementAction {
         this.waitmanager = new WaitManager(driver);
     }
 
-    // click
+    //Clicking
     public ElementAction click(By locator) {
-
-        waitmanager.fluentWait().until(d -> {
-
-            try {
-
-                WebElement element = d.findElement(locator);
-
-                scrollToElementJs(locator);
-
-                element.click();
-
-                return true;
-
-            } catch (Exception e) {
-                LogsManager.error("failed to click ", e.getMessage());
-                return false;
-            }
-        });
+        waitmanager.fluentWait().until(d ->
+                {
+                    try {
+                        WebElement element = d.findElement(locator);
+                        scrollToElementJs(locator);
+                        // Wait until the element is stable (not moving)
+                        Point initialLocation = element.getLocation();
+                        LogsManager.info("initialLocation: " + initialLocation);
+                        Point finalLocation = element.getLocation();
+                        LogsManager.info("finalLocation: " + finalLocation);
+                        if (!initialLocation.equals(finalLocation)) {
+                            return false; // still moving, wait longer
+                        }
+                        element.click();
+                        LogsManager.info("Clicked on element: " + locator);
+                        return true;
+                    } catch (Exception e) {
+                        LogsManager.error("Failed to click on element: " + locator, e.getMessage());
+                        return false;
+                    }
+                }
+        );
         return this;
     }
 
