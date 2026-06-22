@@ -109,7 +109,7 @@ public class SignUpTest extends BaseTest {
     }
 
     @AfterMethod
-    public void tearDown() {
+    public void TearDown() {
         driver.quitDriver();
     }
 

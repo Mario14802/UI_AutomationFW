@@ -5,6 +5,7 @@ import com.automationExercise.utils.logsmanager.LogsManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
 import java.io.File;
@@ -126,6 +127,25 @@ public class ElementAction {
                 return false;
             }
         });
+        return this;
+    }
+
+    //hovering
+    public ElementAction hover(By locator) {
+        waitmanager.fluentWait().until(d ->
+                {
+                    try {
+                        WebElement element = d.findElement(locator);
+                        scrollToElementJs(locator);
+                        new Actions(d).moveToElement(element).perform();
+                        LogsManager.info("Hovered over element: " + locator);
+                        return true;
+                    } catch (Exception e) {
+                        LogsManager.error("Failed to click on element: " + locator, e.getMessage());
+                        return false;
+                    }
+                }
+        );
         return this;
     }
 
