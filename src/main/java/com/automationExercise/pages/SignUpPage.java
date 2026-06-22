@@ -31,6 +31,7 @@ public class SignUpPage {
     private final By accountCreatedLabel = By.cssSelector("[data-qa=\"account-created\"]");
     private final By continueButton = By.cssSelector("[data-qa=\"continue-button\"]");
     private final By SignUpPageLabel = By.xpath("//b[.=\"Enter Account Information\"]");
+
     public SignUpPage(DriverManager driver) {
         this.driver = driver;
     }

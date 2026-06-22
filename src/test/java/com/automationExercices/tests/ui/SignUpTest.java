@@ -8,13 +8,18 @@ import com.automationExercise.pages.SignupLoginPage;
 import com.automationExercise.pages.components.NavigationBarComponent;
 import com.automationExercise.utils.TimeManager;
 import com.automationExercise.utils.readers.JsonReader;
+import io.qameta.allure.*;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-
-public class SignUpLoginTest extends BaseTest {
+@Epic("Signup page testing")
+@Feature("Signup")
+@Story("user Signup")
+@Severity(SeverityLevel.CRITICAL)
+@Owner("Mario")
+public class SignUpTest extends BaseTest {
 
 
     @Test

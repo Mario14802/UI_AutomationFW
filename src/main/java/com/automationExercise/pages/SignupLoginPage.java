@@ -1,6 +1,7 @@
 package com.automationExercise.pages;
 
 import com.automationExercise.drivers.DriverManager;
+import com.automationExercise.pages.components.NavigationBarComponent;
 import com.automationExercise.utils.readers.PropertyReader;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
@@ -21,11 +22,13 @@ public class SignupLoginPage {
     //page
     private final By signupLabel = By.xpath("//div[@class='signup-form' and contains(.,'New User Signup!')]");
     //Errors
-    private final By loginError = By.cssSelector(".login-form  p");
+    private final By loginError = By.cssSelector(".login-form p");
     private final By registerError = By.cssSelector(".signup-form p");
+    public NavigationBarComponent navigationBar;
 
     public SignupLoginPage(DriverManager driver) {
         this.driver = driver;
+        this.navigationBar = new NavigationBarComponent(driver);
     }
 
     //actions

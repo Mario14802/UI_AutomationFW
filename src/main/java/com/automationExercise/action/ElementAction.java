@@ -20,7 +20,7 @@ public class ElementAction {
     }
 
     // click
-    public void click(By locator) {
+    public ElementAction click(By locator) {
 
         waitmanager.fluentWait().until(d -> {
 
@@ -39,10 +39,11 @@ public class ElementAction {
                 return false;
             }
         });
+        return this;
     }
 
     // type
-    public void type(By locator, String text) {
+    public ElementAction type(By locator, String text) {
 
         waitmanager.fluentWait().until(d -> {
 
@@ -62,6 +63,7 @@ public class ElementAction {
                 return false;
             }
         });
+        return this;
     }
 
     // get text
@@ -105,9 +107,9 @@ public class ElementAction {
         return this;
     }
 
-    public void uploadFile(By locator, String Filepath) {
+    public ElementAction uploadFile(By locator, String Filepath) {
 
-        String fileabsolute =  ("user.dir") + File.separator+  Filepath;
+        String fileabsolute = ("user.dir") + File.separator + Filepath;
 
 
         waitmanager.fluentWait().until(d -> {
@@ -124,12 +126,11 @@ public class ElementAction {
                 return false;
             }
         });
+        return this;
     }
 
 
-
-    public WebElement findElement(By locator)
-    {
+    public WebElement findElement(By locator) {
         return driver.findElement(locator);
     }
 
@@ -165,7 +166,7 @@ public class ElementAction {
      */
     /**
      * Scrolls until the target element becomes visible.
-     *
+     * <p>
      * block:'center' places the element in the middle of the viewport.
      */
     public void scrollToElementJs(By locator) {
@@ -178,8 +179,6 @@ public class ElementAction {
                         element
                 );
     }
-
-
 
 
 }
