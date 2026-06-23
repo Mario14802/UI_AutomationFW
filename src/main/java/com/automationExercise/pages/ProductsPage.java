@@ -49,7 +49,7 @@ public class ProductsPage {
     }
 
     private By hoverOverProduct(String productName) {
-        return By.xpath("//p[.='" + productName + "']//ancestor::div[@class=\"product-overlay\"] ");
+        return By.xpath("//div[@class='productinfo text-center']/p[.='" + productName + "']");
     }
 
 

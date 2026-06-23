@@ -198,11 +198,27 @@ public class ElementAction {
 
         WebElement element = driver.findElement(locator);
 
-        ((org.openqa.selenium.JavascriptExecutor) driver)
+        Boolean isWithinViewport = (Boolean) ((org.openqa.selenium.JavascriptExecutor) driver)
                 .executeScript(
-                        "arguments[0].scrollIntoView({block:'center'});",
+                        "var rect = arguments[0].getBoundingClientRect();" +
+                        "return (" +
+                        "  rect.width > 0 &&" +
+                        "  rect.height > 0 &&" +
+                        "  rect.top >= 0 &&" +
+                        "  rect.left >= 0 &&" +
+                        "  rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&" +
+                        "  rect.right <= (window.innerWidth || document.documentElement.clientWidth)" +
+                        ");",
                         element
                 );
+
+        if (isWithinViewport == null || !isWithinViewport) {
+            ((org.openqa.selenium.JavascriptExecutor) driver)
+                    .executeScript(
+                            "arguments[0].scrollIntoView({block:'center'});",
+                            element
+                    );
+        }
     }
 
 
