@@ -23,7 +23,16 @@
     "quantity": "1",
     "total": "Rs. 400"
   },
+  "card": {
+    "cardName": "Automation Card",
+    "cardNumber": "1234567890123456",
+    "cvc": "123",
+    "exMonth": "15",
+    "exYear": "2089"
+  },
   "messages": {
-    "cartAdded": "Your product has been added to cart."
-  }
+    "cartAdded": "Your product has been added to cart.",
+    "paymentSuccess": "ORDER PLACED!"
+  },
+  "invoiceName": "invoice.txt"
 }
