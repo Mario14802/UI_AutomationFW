@@ -3,6 +3,7 @@ package com.automationExercices.tests.ui;
 import com.automationExercices.tests.BaseTest;
 import com.automationExercise.apis.UserManagementAPI;
 import com.automationExercise.drivers.DriverManager;
+import com.automationExercise.drivers.UITest;
 import com.automationExercise.pages.SignupLoginPage;
 import com.automationExercise.pages.components.NavigationBarComponent;
 import com.automationExercise.utils.TimeManager;
@@ -19,7 +20,7 @@ import org.testng.annotations.Test;
 @Story("user login")
 @Severity(SeverityLevel.CRITICAL)
 @Owner("Mario")
-
+@UITest
 public class LoginTest extends BaseTest {
 
     @Test

@@ -2,14 +2,22 @@ package com.automationExercices.tests.ui;
 
 import com.automationExercices.tests.BaseTest;
 import com.automationExercise.drivers.DriverManager;
+import com.automationExercise.drivers.UITest;
 import com.automationExercise.pages.ProductsPage;
 import com.automationExercise.pages.components.NavigationBarComponent;
 import com.automationExercise.utils.readers.JsonReader;
+import io.qameta.allure.*;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+@Epic("Cart testing")
+@Feature("Cart")
+@Story("user Cart")
+@Severity(SeverityLevel.CRITICAL)
+@Owner("Mario")
+@UITest
 public class CartTest extends BaseTest {
 
     private String productName;

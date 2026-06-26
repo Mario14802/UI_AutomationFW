@@ -28,6 +28,11 @@ public class ProductsPage {
     }
 
     // Dynamic locator
+
+    private By productCard(String productName) {
+        return By.xpath("//div[contains(@class,'product-image-wrapper')][.//p[normalize-space()='" + productName + "']]");
+    }
+
     //Product name
     private By productName(String productName) {
         return By.xpath("//div[@class='features_items'] //div[@class='overlay-content'] /p[.='" + productName + "']");
@@ -38,18 +43,13 @@ public class ProductsPage {
         return By.xpath("//div[@class='features_items'] //div[@class='overlay-content'] /p[.='" + productName + "'] //preceding-sibling::h2");
     }
 
-
     private By addToCartButton(String productName) {
-        return By.xpath("//div[@class='features_items'] //div[@class='overlay-content'] /p[.='" + productName + "'] //following-sibling::a");
+        return By.xpath("//div[contains(@class,'product-image-wrapper')][.//p[normalize-space()='" + productName + "']]//div[contains(@class,'overlay-content')]//a[contains(@class,'add-to-cart')]");
     }
 
 
     private By viewProduct(String productName) {
-        return By.xpath("//p[.='" + productName + "'] //following::div[@class='choose'][1]");
-    }
-
-    private By hoverOverProduct(String productName) {
-        return By.xpath("//div[@class='productinfo text-center']/p[.='" + productName + "']");
+        return By.xpath("//p[.='" + productName + "']//following::div[@class='choose']//a");
     }
 
 
@@ -62,8 +62,10 @@ public class ProductsPage {
 
     @Step("Click on Add to Cart for product: {productName}")
     public ProductsPage clickOnAddToCart(String productName) {
-        driver.element().hover(hoverOverProduct(productName))
-                .click(addToCartButton(productName));
+        // Hover the full card so the hidden overlay becomes clickable.
+        driver.element().hover(productCard(productName));
+
+        driver.element().click(addToCartButton(productName));
         return this;
     }
 

@@ -3,16 +3,24 @@ package com.automationExercices.tests.ui;
 import com.automationExercices.tests.BaseTest;
 import com.automationExercise.apis.UserManagementAPI;
 import com.automationExercise.drivers.DriverManager;
+import com.automationExercise.drivers.UITest;
 import com.automationExercise.pages.CartPage;
 import com.automationExercise.pages.ProductsPage;
 import com.automationExercise.pages.SignupLoginPage;
 import com.automationExercise.pages.components.NavigationBarComponent;
 import com.automationExercise.utils.TimeManager;
 import com.automationExercise.utils.readers.JsonReader;
+import io.qameta.allure.*;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+@Epic("Checkout testing")
+@Feature("Checkout")
+@Story("user Checkout")
+@Severity(SeverityLevel.CRITICAL)
+@Owner("Mario")
+@UITest
 public class CheckoutTest extends BaseTest {
     String timestamp = TimeManager.getSimpleTimestamp();
 
@@ -117,7 +125,7 @@ public class CheckoutTest extends BaseTest {
 
     // Configurations
     @BeforeClass
-    protected void setUp() {
+    protected void setUpClass() {
         testData = new JsonReader("Checkout_Test_data");
 
         // Initialize dynamic credentials using timestamp
@@ -150,10 +158,10 @@ public class CheckoutTest extends BaseTest {
         productTotal = testData.getJsonData("product.total");
         itemAddedLabel = testData.getJsonData("messages.cartAdded");
 
-        // Driver setup
         driver = new DriverManager();
         new NavigationBarComponent(driver).navigate();
     }
+
 
     @AfterClass
     public void tearDown() {

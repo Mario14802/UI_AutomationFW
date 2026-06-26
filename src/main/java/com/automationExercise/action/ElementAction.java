@@ -2,6 +2,8 @@ package com.automationExercise.action;
 
 import com.automationExercise.utils.WaitManager;
 import com.automationExercise.utils.logsmanager.LogsManager;
+import org.openqa.selenium.ElementClickInterceptedException;
+import org.openqa.selenium.ElementNotInteractableException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
@@ -36,7 +38,13 @@ public class ElementAction {
                         if (!initialLocation.equals(finalLocation)) {
                             return false; // still moving, wait longer
                         }
-                        element.click();
+                        try {
+                            element.click();
+                        } catch (ElementClickInterceptedException e) {
+                            ((org.openqa.selenium.JavascriptExecutor) d).executeScript("arguments[0].click();", element);
+                        } catch (ElementNotInteractableException e) {
+                            ((org.openqa.selenium.JavascriptExecutor) d).executeScript("arguments[0].click();", element);
+                        }
                         LogsManager.info("Clicked on element: " + locator);
                         return true;
                     } catch (Exception e) {

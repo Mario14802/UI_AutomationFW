@@ -2,6 +2,7 @@ package com.automationExercices.tests.ui;
 
 import com.automationExercices.tests.BaseTest;
 import com.automationExercise.drivers.DriverManager;
+import com.automationExercise.drivers.UITest;
 import com.automationExercise.pages.ProductsPage;
 import com.automationExercise.pages.components.NavigationBarComponent;
 import com.automationExercise.utils.readers.JsonReader;
@@ -10,6 +11,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+@UITest
 public class ProductTest extends BaseTest {
 
     private String productName1;

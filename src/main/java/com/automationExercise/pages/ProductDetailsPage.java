@@ -9,7 +9,7 @@ import org.openqa.selenium.By;
 public class ProductDetailsPage {
     //Locators
     private final String productEndPoint = PropertyReader.getProperty("BASE_URL") + "/product_details/";
-    private final By productTitle = By.xpath("//div[@class=\"product-information\"]/h2");
+    private final By productTitle = By.xpath("//div[@class='product-information']/h2");
     private final By productPrice = By.cssSelector(".product-information > span > span");
     private final By productAdded = By.xpath("//div[@class=\"modal-body\"]/p[contains(text(),\"Your product has been added to cart.\")]");
     private final By quantityInput = By.id("quantity");

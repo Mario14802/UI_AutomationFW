@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="ecommerce-automation-suite" parallel="tests" thread-count="10">
+
+    <test name="User Account Lifecycle Tests">
+        <classes>
+            <class name="com.automationExercices.tests.ui.SignUpTest"/>
+            <class name="com.automationExercices.tests.ui.LoginTest"/>
+        </classes>
+    </test>
+
+    <test name="Product Discovery Tests">
+        <classes>
+            <class name="com.automationExercices.tests.ui.ProductTest"/>
+            <class name="com.automationExercices.tests.ui.ProductDetailsTest"/>
+        </classes>
+    </test>
+
+
+    <test name="CartTest Funnel Tests">
+        <classes>
+            <class name="com.automationExercices.tests.ui.CartTest"/>
+        </classes>
+    </test>
+
+    <test name="CheckoutTest Funnel Tests">
+        <classes>
+            <class name="com.automationExercices.tests.ui.CheckoutTest"/>
+        </classes>
+    </test>
+
+    <test name="E2E Test">
+        <classes>
+            <class name="com.automationExercices.tests.ui.PaymentTest"/>
+        </classes>
+    </test>
+
+
+</suite>

@@ -3,6 +3,7 @@ package com.automationExercices.tests.ui;
 
 import com.automationExercices.tests.BaseTest;
 import com.automationExercise.drivers.DriverManager;
+import com.automationExercise.drivers.UITest;
 import com.automationExercise.pages.SignUpPage;
 import com.automationExercise.pages.SignupLoginPage;
 import com.automationExercise.pages.components.NavigationBarComponent;
@@ -19,6 +20,7 @@ import org.testng.annotations.Test;
 @Story("user Signup")
 @Severity(SeverityLevel.CRITICAL)
 @Owner("Mario")
+@UITest
 public class SignUpTest extends BaseTest {
 
 

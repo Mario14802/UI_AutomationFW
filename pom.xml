@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
@@ -15,6 +15,9 @@
 
         <allure.version>2.34.0</allure.version>
         <aspectj.version>1.9.20.1</aspectj.version>
+
+        <parallel.mode>none</parallel.mode>
+        <thread.count>1</thread.count>
     </properties>
 
     <dependencyManagement>
@@ -26,42 +29,35 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-
         </dependencies>
     </dependencyManagement>
 
     <dependencies>
-
-        <!-- Allure -->
         <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-testng</artifactId>
             <scope>compile</scope>
         </dependency>
 
-        <!-- Allure Enviroment -->
         <dependency>
             <groupId>com.github.automatedowl</groupId>
             <artifactId>allure-environment-writer</artifactId>
             <version>1.0.0</version>
         </dependency>
 
-        <!-- Allure Deo to get the latest verions without ui -->
-        <!-- Source: https://mvnrepository.com/artifact/org.jsoup/jsoup -->
         <dependency>
             <groupId>org.jsoup</groupId>
             <artifactId>jsoup</artifactId>
             <version>1.22.2</version>
             <scope>compile</scope>
         </dependency>
-        <!-- File reader -->
+
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>2.16.1</version>
         </dependency>
 
-        <!-- Source: https://mvnrepository.com/artifact/com.jayway.jsonpath/json-path -->
         <dependency>
             <groupId>com.jayway.jsonpath</groupId>
             <artifactId>json-path</artifactId>
@@ -69,7 +65,6 @@
             <scope>compile</scope>
         </dependency>
 
-        <!-- Source: https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple -->
         <dependency>
             <groupId>com.googlecode.json-simple</groupId>
             <artifactId>json-simple</artifactId>
@@ -77,16 +72,12 @@
             <scope>compile</scope>
         </dependency>
 
-
-        <!-- Source: https://mvnrepository.com/artifact/io.rest-assured/rest-assured -->
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
             <version>6.0.0</version>
         </dependency>
 
-
-        <!-- to read fromm excell   -->
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi</artifactId>
@@ -99,7 +90,6 @@
             <version>5.4.1</version>
         </dependency>
 
-        <!-- Selenium -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
@@ -107,7 +97,6 @@
             <scope>compile</scope>
         </dependency>
 
-        <!-- TestNG -->
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
@@ -115,7 +104,6 @@
             <scope>compile</scope>
         </dependency>
 
-        <!-- Log4j Core -->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
@@ -123,7 +111,6 @@
             <scope>compile</scope>
         </dependency>
 
-        <!-- Log4j API -->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-api</artifactId>
@@ -131,7 +118,6 @@
             <scope>compile</scope>
         </dependency>
 
-        <!-- Log4j SLF4J Implementation -->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-slf4j2-impl</artifactId>
@@ -139,21 +125,18 @@
             <scope>compile</scope>
         </dependency>
 
-        <!-- AspectJ Weaver -->
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
             <version>${aspectj.version}</version>
         </dependency>
 
-
-        <!-- https://mvnrepository.com/artifact/ws.schild/jave-all-deps -->
         <dependency>
             <groupId>ws.schild</groupId>
             <artifactId>jave-all-deps</artifactId>
             <version>3.5.0</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/com.automation-remarks/video-recorder-testng -->
+
         <dependency>
             <groupId>com.automation-remarks</groupId>
             <artifactId>video-recorder-testng</artifactId>
@@ -173,32 +156,50 @@
                 </exclusion>
             </exclusions>
         </dependency>
-
-
-
-
     </dependencies>
 
     <build>
-        <!-- to move target to test output -->
-        <directory> test-output/target </directory>
+        <directory>test-output/target</directory>
         <plugins>
-
-            <!-- Maven Surefire Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.1.2</version>
+                <version>3.5.6</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjweaver</artifactId>
+                        <version>${aspectj.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.testng</groupId>
+                        <artifactId>testng</artifactId>
+                        <version>7.12.0</version>
+                        <scope>compile</scope>
+                    </dependency>
+                </dependencies>
 
                 <configuration>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>src/test/resources/suites/ecommerce-automation-suite.xml</suiteXmlFile>
+                    </suiteXmlFiles>
+
+                    <properties>
+                        <property>
+                            <name>parallel</name>
+                            <value>${parallel.mode}</value>
+                        </property>
+                        <property>
+                            <name>threadcount</name>
+                            <value>${thread.count}</value>
+                        </property>
+                    </properties>
+
                     <argLine>
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                     </argLine>
                 </configuration>
-
             </plugin>
-
         </plugins>
     </build>
-
 </project>

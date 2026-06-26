@@ -3,6 +3,7 @@ package com.automationExercices.tests.ui;
 import com.automationExercices.tests.BaseTest;
 import com.automationExercise.apis.UserManagementAPI;
 import com.automationExercise.drivers.DriverManager;
+import com.automationExercise.drivers.UITest;
 import com.automationExercise.pages.CartPage;
 import com.automationExercise.pages.CheckoutPage;
 import com.automationExercise.pages.ProductsPage;
@@ -18,6 +19,7 @@ import org.testng.annotations.Test;
 @Epic("Automation Exercise")
 @Feature("UI Payment")
 @Story("Payment")
+@UITest
 public class PaymentTest extends BaseTest {
 
     String timestamp = TimeManager.getSimpleTimestamp();
@@ -62,6 +64,7 @@ public class PaymentTest extends BaseTest {
     )
     @Severity(SeverityLevel.CRITICAL)
     @Owner("Mario")
+
     public void registerNewAccount() {
         new UserManagementAPI().createRegisterUserAccount(
                         name,
@@ -178,7 +181,7 @@ public class PaymentTest extends BaseTest {
 
     // Configurations
     @BeforeClass
-    protected void setUp() {
+    protected void setUpClass() {
         testData = new JsonReader("Checkout_Test_data");
 
         // Dynamic user assignment from JSON variables
@@ -219,10 +222,10 @@ public class PaymentTest extends BaseTest {
         cardExYear = testData.getJsonData("card.exYear");
         paymentSuccessMessage = testData.getJsonData("messages.paymentSuccess");
 
-        // Driver Execution
         driver = new DriverManager();
         new NavigationBarComponent(driver).navigate();
     }
+
 
     @AfterClass
     public void tearDown() {
